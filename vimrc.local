@@ -10,7 +10,7 @@ inoremap jj <ESC>
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
-    colorscheme solarized
+    colorscheme tomorrow-night
   else
     colorscheme desert
   endif
@@ -39,3 +39,18 @@ let indentLine_char = '┆'
 
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
+
+" Allow jsx syntax in js files
+let g:jsx_ext_required = 0
+
+" Tell syntastic to use eslint
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Override eslint with local version where necessary.
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
