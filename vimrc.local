@@ -15,7 +15,6 @@ if (&t_Co == 256 || has('gui_running'))
     colorscheme desert
   endif
 endif
-
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
 " This section is here to prevent AlignMaps from adding a bunch of mappings
@@ -31,3 +30,12 @@ function! s:RemoveConflictingAlignMaps()
 endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+" Set whitespace characters
+set list
+set listchars=trail:␠,eol:⏎,tab:␉·,trail:␠,nbsp:␠⏎
+let indentLine_color_term = 239
+let indentLine_char = '┆'
+
+" Enable vim-airline
+let g:airline#extensions#tabline#enabled = 1
