@@ -33,7 +33,7 @@ silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
 " Set whitespace characters
 set list
-set listchars=trail:␠,eol:⏎,tab:␉·,trail:␠,nbsp:␠⏎
+set listchars=trail:␠,eol:⏎,tab:␉·,trail:␠,nbsp:␠
 let indentLine_color_term = 239
 let indentLine_char = '┆'
 
